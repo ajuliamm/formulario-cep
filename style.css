@@ -15,9 +15,11 @@ body{
     display: flex;
     flex-direction: column;
     gap:40px;
+
     background-color: rgba(216, 202, 224, 0.2);
-    max-width: 500px;
-    width: 100%;
+
+    width: 100vw;
+    max-width: 600px;   
     padding: 30px;
 
     color: #ccc6c6;
@@ -52,6 +54,7 @@ h1{
     font-size: 1.1rem;
     transition: .4s;
 }
-input:focus ~ label {
-    transform:translateY(-30px) ;
+input:focus ~ label,
+input:valid ~ label {
+    transform:translateY(-30px) translateX(-5px);
 }
