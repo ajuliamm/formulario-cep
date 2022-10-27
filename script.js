@@ -8,17 +8,26 @@ cep.addEventListener('keyup',()=>{
 var cleave = new Cleave('#cep', {
     delimiters: ['-'],
     blocks: [5, 3],
-    uppercase: true
+    numericOnly: true
 });
 }
 )
+
+function limpaCampo (){
+    if (cep.value === ""){
+        rua.value= ''
+        bairro.value = ''
+        cidade.value = ''        
+        estado.value = ''
+    }
+}
 const currentCEP= async (cepValue) => {
     
     const data = await fetch(`https://cdn.apicep.com/file/apicep/${cepValue}.json`)
     .then(response => response.json())
     .catch(function(err){
         console.log(err)
-        alert('Cep não encontrado. Digite o cep usando o separador "-", ex: 00000-000')
+        alert('Cep não encontrado.')
 
     })
 
@@ -26,15 +35,17 @@ const currentCEP= async (cepValue) => {
     bairro.value = data.district
     cidade.value = data.city
     estado.value = data.state
+
+    
     
 }
 
 
 cep.addEventListener('blur', e =>{
 
-
     if(e.target.value !== ""){
     let cepValue=e.target.value
     currentCEP(cepValue)
     }
+    limpaCampo()
 })
