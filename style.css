@@ -54,7 +54,12 @@ h1{
     font-size: 1.1rem;
     transition: .4s;
 }
-input:focus ~ label,
-input:valid ~ label {
+
+input:focus ~ label{
     transform:translateY(-30px) translateX(-5px);
 }
+input:not(:placeholder-shown) ~ label{
+    transform:translateY(-30px) translateX(-5px);
+}
+
+
